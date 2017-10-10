@@ -70,14 +70,20 @@ class AntMenu extends React.Component {
                 </div>
                 <br />
                 <Menu
-            className={collapsedClass}
-            defaultSelectedKeys={this.state.selectedKeys}
-            defaultOpenKeys={this.state.openKeys}
-            onOpenChange={this.onOpenChange}
-            selectedKeys={[key]}
-            mode={this.state.mode}
-            theme={this.state.theme}
-            >
+                  className={collapsedClass}
+                  defaultSelectedKeys={this.state.selectedKeys}
+                  defaultOpenKeys={this.state.openKeys}
+                  onOpenChange={this.onOpenChange}
+                  selectedKeys={[key]}
+                  mode={this.state.mode}
+                  theme={this.state.theme}
+                >
+                    <SubMenu key="sub-cars" title={<span><Icon type="car" /><span>车辆管理</span></span>}>
+                        <Menu.Item key='cars'>
+                            <Link to='/cars'>车辆列表</Link>
+                        </Menu.Item>
+                    </SubMenu>
+
                     <Menu.Item key="customers" to='/customers' activeClassName='active'>
                         <Icon type="contacts" />
                         <Link to="/customers" onClick={this.toCustomer}>用户管理</Link>
