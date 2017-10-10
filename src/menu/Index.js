@@ -1,7 +1,7 @@
 import AntMenu from './AntMenu'
 import React from 'react';
 import '../stylesheets/Menu.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Hello from '../Hello'
 import asyncComponent from "../components/AsyncComponent";
 import LocalTime from '../components/LocalTime'
@@ -15,6 +15,7 @@ const AsyncTool = asyncComponent(() => import("../Tool"));
 const AsyncCar = asyncComponent(() => import("../Car"))
 const AsyncCarNew = asyncComponent(() => import('../cars/New'));
 const AsyncAbout = asyncComponent(() => import("../About"));
+const AsyncNotFound = asyncComponent(() => import('../NotFound'))
 
 class MainMenu extends React.Component {
   state = {
@@ -48,6 +49,7 @@ class MainMenu extends React.Component {
                       <Layout>
                         <Content>
                           <div>
+                            <Switch>
                               <Route exact path="/" component={Hello}/>
                               <Route path="/customers" component={AsyncCustomer}/>
                               <Route path="/hello" component={Hello}/>
@@ -55,6 +57,8 @@ class MainMenu extends React.Component {
                               <Route path="/about" component={AsyncAbout}/>
                               <Route exact path="/cars" component={AsyncCar}/>
                               <Route exact path="/cars/new" component={AsyncCarNew}/>
+                              <Route exact component={AsyncNotFound}/>
+                            </Switch>
                           </div>
                         </Content>
                       </Layout>
