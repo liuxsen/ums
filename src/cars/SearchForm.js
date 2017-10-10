@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Row, Col, Input, Button, Icon, Select } from 'antd';
+import { withRouter } from 'react-router-dom';
 import Myfetch from '../until/MyFetch';
 import '../stylesheets/Button.css';
 import "../stylesheets/cars/SearchForm.css";
@@ -45,7 +46,7 @@ class SearchForm extends React.Component {
     }
 
     toNew = () => {
-        this.props.toNew()
+        this.props.history.push("/cars/new")
     }
 
     render() {
@@ -254,4 +255,4 @@ class SearchForm extends React.Component {
 
 
 const WrappedAdvancedSearchForm = Form.create()(SearchForm);
-export default WrappedAdvancedSearchForm;
+export default withRouter(WrappedAdvancedSearchForm);

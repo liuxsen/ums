@@ -13,8 +13,8 @@ const { Sider, Content } = Layout;
 const AsyncCustomer = asyncComponent(() => import("../Customer"));
 const AsyncTool = asyncComponent(() => import("../Tool"));
 const AsyncCar = asyncComponent(() => import("../Car"))
-
-  const AsyncAbout = asyncComponent(() => import("../About"));
+const AsyncCarNew = asyncComponent(() => import('../cars/New'));
+const AsyncAbout = asyncComponent(() => import("../About"));
 
 class MainMenu extends React.Component {
   state = {
@@ -53,7 +53,8 @@ class MainMenu extends React.Component {
                               <Route path="/hello" component={Hello}/>
                               <Route path="/tool" component={AsyncTool}/>
                               <Route path="/about" component={AsyncAbout}/>
-                              <Route path="/cars" component={AsyncCar}/>
+                              <Route exact path="/cars" component={AsyncCar}/>
+                              <Route exact path="/cars/new" component={AsyncCarNew}/>
                           </div>
                         </Content>
                       </Layout>
